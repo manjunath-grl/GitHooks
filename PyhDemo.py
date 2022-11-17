@@ -6,3 +6,4 @@ with open("package.json", "r") as f:
 # Output: {'name': 'Bob', 'languages': ['English', 'French']}
 print(data)
 print(data["name"])
+print("done")

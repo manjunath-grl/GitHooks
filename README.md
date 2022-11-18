@@ -1,2 +1,2 @@
 # GitHooks
-Checking GitHooks ,Husky , Pre-commit
+Checking GitHooks ,Husky , Pre-commit test

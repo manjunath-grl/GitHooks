@@ -1,7 +1,5 @@
 name: Codeball
-on:
-  pull_request: {}
-  pull_request_review_comment:
+on: pull
     types: [created, edited]
 
 jobs:

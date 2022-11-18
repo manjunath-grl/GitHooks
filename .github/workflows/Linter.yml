@@ -1,0 +1,28 @@
+on: [push, pull_request]
+
+jobs:
+  python-lint:
+    runs-on: ubuntu-latest
+    name: CI workflow
+    steps:
+    - name: checkout source repo
+      uses: actions/checkout@main
+
+    - name: Lint Code Base
+      uses: github/super-linter@v4
+      env:
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+    - name: Create Pull Request
+      if: steps.action_black.outputs.is_formatted == 'true'
+      uses: peter-evans/create-pull-request@v3
+      with: 
+         token: ${{ secrets.GITHUB_TOKEN }}
+         title: "Format Python code After lint"
+         commit-message: ":art: Format Python code with Lint"
+         body: |
+           Linter for Python
+         base: ${{ github.head_ref }} # Creates pull request onto pull request or commit branch
+         branch: actions/Lint

@@ -1,7 +1,6 @@
 name: Codeball
-on: pull
-    types: [created, edited]
-
+on: [push]
+ 
 jobs:
   codeball_job:
     runs-on: ubuntu-latest

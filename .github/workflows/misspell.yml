@@ -1,6 +1,6 @@
 name: Run misspell
 
-on: workflow_dispatch
+on: [push, pull_request]
 
 jobs:
     check-reviewdog:

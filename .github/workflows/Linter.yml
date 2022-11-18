@@ -8,13 +8,12 @@ jobs:
     - name: checkout source repo
       uses: actions/checkout@main
 
-    - name: linting
-      uses: programmingwithalex/pylinter@main
-      with:
-        python-root: '.'
-        flake8-flags: '--count --show-source --statistics'
-        mypy-flags: '--ignore-missing-imports'
-        fail-on-isort: false
+    - name: Lint Code Base
+      uses: github/super-linter@v4
+      env:
+          VALIDATE_ALL_CODEBASE: false
+          DEFAULT_BRANCH: master
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 
     - name: Create Pull Request
       if: steps.action_black.outputs.is_formatted == 'true'

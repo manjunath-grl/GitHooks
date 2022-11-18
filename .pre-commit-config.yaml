@@ -4,12 +4,12 @@ exclude: "^\
 
 repos:
   - repo: https://github.com/pre-commit/pre-commit-hooks
-    rev: v2.3.0
+    rev: v4.3.0
     hooks:
       - id: check-yaml
       - id: end-of-file-fixer
       - id: trailing-whitespace # trims trailing whitespace.
-      - id: flake8 #Python checker
+      #- id: flake8 #Python checker
   #Python Formatter
   - repo: https://github.com/psf/black
     rev: 22.10.0
@@ -17,10 +17,10 @@ repos:
       - id: black
         language_version: python3.8
   #Python Linting
-  #- repo: https://github.com/PyCQA/pylint
-  #  rev: v2.15.5
-  #  hooks:
-  #    - id: pylint
+  - repo: https://github.com/PyCQA/pylint
+    rev: v2.15.5
+    hooks:
+      - id: pylint
   #language_version: python3.8
   #Python checker
   - repo: https://github.com/PyCQA/flake8
@@ -32,4 +32,9 @@ repos:
     rev: v15.0.4
     hooks:
       - id: clang-format
-        files: \.(js|ts|cpp|C|css|html|json|yaml|yml)$
+        files: \.(js|cs|json|yaml)$
+  #dotnet formatter
+  #- repo: https://github.com/jvstein/pre-commit-dotnet-format
+  #  rev: v0.2
+  #  hooks:
+  #    - id: dotnet-format

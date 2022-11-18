@@ -1,5 +1,5 @@
 name: black-action
-on: workflow dispatch
+on: workflow_dispatch
 jobs:
   linter_name:
     name: runner / black

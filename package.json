@@ -1,9 +1,57 @@
 {
-    "languages": "English",
-    "name": "abcdef",
-    "numbers": [
+  "name": "calculator",
+  "version": "0.1.0",
+  "license": "MIT",
+  "homepage": "http://ahfarmer.github.io/calculator",
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "gh-pages": "^2.0.1",
+    "husky": "^8.0.2",
+    "lint-staged": "^13.0.3",
+    "prettier": "^1.19.1",
+    "react-scripts": "^5.0.1"
+  },
+  "dependencies": {
+    "big.js": "^5.2.2",
+    "github-fork-ribbon-css": "^0.2.1",
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6"
+  },
+  "scripts": {
+    "prepare": "husky install",
+    "start": "react-scripts start",
+    "build": "react-scripts build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject",
+    "deploy": "gh-pages -d build",
+    "lint:js": "eslint . --ext .js",
+    "lint:js:fix": "npm run lint:js -- --fix",
+    "test:related": "jest --bail --findRelatedTests"
+  },
+  "prettier": {
+    "trailingComma": "all"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  },
+  "first": {
+    "local": {
+      "languages": "English",
+      "name": "abcdef",
+      "numbers": [
         2,
         1.6,
         null
-    ]
+      ]
+    }
+  }
 }

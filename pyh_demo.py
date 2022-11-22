@@ -1,10 +1,10 @@
+"""Impot Json module"""
 import json
 
 with open("package.json", encoding="utf-8") as f:
     read_data = json.loads(f.read())
 
-print(read_data)
-print(read_data["name"])
+print(read_data["scripts"])
 print("done")
 
 
@@ -25,7 +25,7 @@ print(multiplier(20, 40))
 
 # Python String Operations
 def string_reverse(strng):
-
+    """read the string and reverse it"""
     reverse_str = ""
     j = len(strng)
     while j > 0:

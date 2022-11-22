@@ -2,3 +2,7 @@
 /build
 *.egg-info
 /dist
+#dependencies
+node_modules
+LICENSE
+node_modules/.bin

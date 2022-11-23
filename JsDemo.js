@@ -6,7 +6,7 @@ import CRUDTable, {
   DeleteForm,
 } from "react-crud-table";
 import SelectSearch from "react-select-search";
-import * as emp_json from "../../modal/grl_emp.json";
+import * as empJson from "../../modal/grl_emp.json";
 import "react-select-search/style.css";
 import axios from "axios";
 
@@ -15,18 +15,18 @@ import axios from "axios";
 
 let tasks = [];
 let shortDate = "";
-let gate_pass_id = "";
+let gatePassId = "";
 const path = window.location;
 
-// let empData = Object.keys(emp_json.default).map(emp => {
-//     return { key: emp, name: emp_json.default[emp] }
+// let empData = Object.keys(empJson.default).map(emp => {
+//     return { key: emp, name: empJson.default[emp] }
 // });
 
 // console.log(empData)
 let count = tasks.length;
 const service = {
   fetchItems: (payload) => {
-    let result = Array.from(tasks);
+    const result = Array.from(tasks);
     return Promise.resolve(result);
   },
   create: (task) => {
@@ -58,7 +58,7 @@ const getData = () => {
     .get(path + "data.php")
     .then((res) => res.data)
     .then((data) => {
-      gate_pass_id = "GRL-IN-" + (data.length ? ++data[data.length - 1].id : 1);
+      gatePassId = "GRL-IN-" + (data.length ? ++data[data.length - 1].id : 1);
       console.log(data);
     });
 };
@@ -66,19 +66,19 @@ const getData = () => {
 const Example = (props) => {
   const [isPrintClicked, setPrint] = useState(false);
   const [empId, setValue] = useState("");
-  const empData = Object.keys(emp_json.default).map((emp) => {
-    return { value: emp, name: emp_json.default[emp] };
+  const empData = Object.keys(empJson.default).map((emp) => {
+    return { value: emp, name: empJson.default[emp] };
   });
   const printPage = () => {
     if (empId && tasks.length) {
-      let date = new Date();
-      let month = date.getUTCMonth() + 1;
+      const date = new Date();
+      const month = date.getUTCMonth() + 1;
       shortDate = date.getDate() + "-" + month + "-" + date.getFullYear();
-      // gate_pass_id = 'GRL-IN-'+ ;
-      let formData = new FormData();
+      // gatePassId = 'GRL-IN-'+ ;
+      const formData = new FormData();
       formData.append("emp_id", empId);
-      formData.append("emp_name", emp_json[empId]);
-      formData.append("gate_pass_id", gate_pass_id);
+      formData.append("emp_name", empJson[empId]);
+      formData.append("gatePassId", gatePassId);
       // formData.append('date', shortDate);
       formData.append("device_data", JSON.stringify(tasks));
       console.log(shortDate);
@@ -106,7 +106,7 @@ const Example = (props) => {
       document.getElementsByClassName(
         "crud-button--positive crud-button--modal-trigger",
       )[0].style.display = "none";
-      var childEle = document.getElementsByClassName("crud-table__row");
+      const childEle = document.getElementsByClassName("crud-table__row");
       Object.keys(childEle).forEach((e) => {
         childEle[e].childNodes[
           childEle[e].childElementCount - 1
@@ -119,7 +119,7 @@ const Example = (props) => {
   }, [isPrintClicked]);
 
   const dataChange = (d) => {
-    console.log(d, emp_json[d]);
+    console.log(d, empJson[d]);
     setValue(d);
   };
   return (
@@ -152,10 +152,10 @@ const Example = (props) => {
         <>
           <div className="employe_details">
             <div>
-              <p>Employee Name : {emp_json[empId]}</p>
+              <p>Employee Name : {empJson[empId]}</p>
               <p>DATE: {shortDate}</p>
             </div>
-            <p className="gate_pass">Gate Pass NO: {gate_pass_id}</p>
+            <p className="gate_pass">Gate Pass NO: {gatePassId}</p>
           </div>{" "}
         </>
       ) : null}
@@ -236,7 +236,6 @@ const Example = (props) => {
                         onSubmit={task => service.update(task)}
                         submitText="Update"
                         className='use-condition'
-
 
                         validate={(values) => {
                             const errors = {};

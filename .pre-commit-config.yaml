@@ -54,12 +54,22 @@ repos:
 
   # Js Eslint
   #- repo: https://github.com/pre-commit/mirrors-eslint
-  #  rev: v8.27.0
+  #  rev: v8.28.0
   #  hooks:
   #    - id: eslint
+  #      args: [--fix]
 
   # tslint
   #- repo: https://github.com/awebdeveloper/pre-commit-tslint
   #  rev: 0.0.2
   #  hooks:
   #    - id: tslint
+
+  #- repo: local
+  #  hooks:
+  #    - id: husky-run-pre-commit
+  #      name: husky
+  #      language: system
+  #      entry: node_modules/.bin/husky-run pre-commit
+  #      pass_filenames: false
+  #      always_run: true

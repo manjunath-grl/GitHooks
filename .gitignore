@@ -3,6 +3,6 @@
 *.egg-info
 /dist
 #dependencies
-node_modules
+#node_modules
 LICENSE
-node_modules/.bin
+#node_modules/.bin

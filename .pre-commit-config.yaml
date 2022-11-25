@@ -64,12 +64,3 @@ repos:
   #  rev: 0.0.2
   #  hooks:
   #    - id: tslint
-
-  #- repo: local
-  #  hooks:
-  #    - id: husky-run-pre-commit
-  #      name: husky
-  #      language: system
-  #      entry: node_modules/.bin/husky-run pre-commit
-  #      pass_filenames: false
-  #      always_run: true

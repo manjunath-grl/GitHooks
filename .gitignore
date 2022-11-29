@@ -6,3 +6,8 @@
 node_modules
 LICENSE
 node_modules/.bin
+.scannerwork
+*.dll
+*.cache
+obj
+bin

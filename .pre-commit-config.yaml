@@ -58,6 +58,15 @@ repos:
       - id: eslint
         args: [--fix]
 
+  - repo: local
+    hooks:
+      - id: unittests
+        name: run unit tests
+        entry: python -m unittest
+        language: system
+        pass_filenames: false
+        args: ["discover"]
+
   # tslint
   #- repo: https://github.com/awebdeveloper/pre-commit-tslint
   #  rev: 0.0.2

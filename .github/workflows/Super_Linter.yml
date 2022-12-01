@@ -1,0 +1,43 @@
+name: Lint all Code Base
+on: [push, pull_request]
+
+jobs:
+  build:
+    # Name the Job
+    name: Lint Code Base
+    # Set the agent to run on
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          # Full git history is needed to get a proper
+          # list of changed files within `super-linter`
+          fetch-depth: 0
+
+      - name: Lint all code Bases
+        id: Lint
+        uses: github/super-linter@v4
+        env:
+          VALIDATE_ALL_CODEBASE: false
+          # Change to 'specific branch name' if your main branch differs
+          DEFAULT_BRANCH: main
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+ 
+     # - name: Create Pull Request
+      #  if: steps.Lint.outputs.exit-code == 1
+       # uses: peter-evans/create-pull-request@v4
+        #with:
+         # commit-message: Update Code
+          #title: 'Update Code'
+          #body: |
+           # Update Code
+            #- Updated with *Linter changes
+            #- Auto-generated
+          #labels: |
+           # Lint
+            #Automated pr
+          #reviewers: Srinivasan-78  
+          #branch: lint-patches
+          #base: ${{ github.head_ref }}

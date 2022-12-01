@@ -24,22 +24,20 @@ jobs:
           # Change to 'specific branch name' if your main branch differs
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          args: --exit-code
-
-      - name: Create Pull Request
-        if: steps.Lint.outputs.exit-code == 1
-        uses: peter-evans/create-pull-request@v4
-        with:
-          commit-message: Update Code
-          title: 'Update Code'
-          body: |
-            Update Code
-            - Updated with *Linter changes
-            - Auto-generated
-          labels: |
-            Lint
-            Automated pr
-          reviewers: Srinivasan-78  
-          branch: lint-patches
-          base: ${{ github.head_ref }}
+ 
+     # - name: Create Pull Request
+      #  if: steps.Lint.outputs.exit-code == 1
+       # uses: peter-evans/create-pull-request@v4
+        #with:
+         # commit-message: Update Code
+          #title: 'Update Code'
+          #body: |
+           # Update Code
+            #- Updated with *Linter changes
+            #- Auto-generated
+          #labels: |
+           # Lint
+            #Automated pr
+          #reviewers: Srinivasan-78  
+          #branch: lint-patches
+          #base: ${{ github.head_ref }}

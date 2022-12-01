@@ -16,19 +16,19 @@ jobs:
           # list of changed files within `super-linter`
           fetch-depth: 0
 
-      - name: Lint Code Base
+      - name: Lint all code Bases
+        id: Lint
         uses: github/super-linter@v4
         env:
           VALIDATE_ALL_CODEBASE: false
           # Change to 'specific branch name' if your main branch differs
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Set Lint branch name
-        id: vars
-        run: echo ::set-output name=branch-name::"lint-patches/$GITHUB_HEAD_REF"
+        with:
+          args: --exit-code
 
       - name: Create Pull Request
+        if: steps.Lint.outputs.exit-code == 1
         uses: peter-evans/create-pull-request@v4
         with:
           commit-message: Update Code
@@ -41,5 +41,5 @@ jobs:
             Lint
             Automated pr
           reviewers: Srinivasan-78  
-          branch: ${{ steps.vars.outputs.branch-name }}
+          branch: lint-patches
           base: ${{ github.head_ref }}
